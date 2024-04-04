@@ -1,0 +1,108 @@
+﻿@using EntityLayer.Concrete
+@model List<Commentt>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+
+<div class="content-wrapper">
+    <div class="card" style="background-color: ghostwhite">
+        @*<h2>ROTALAR</h2>*@
+
+        <h5 class="card-header" style="background-color: #566A7F;color:white">TUR YORUM LİSTESİ</h5>
+        <br />
+        <div class="table-responsive text-nowrap" style="padding: 0.75rem 1.25rem;background-color: ghostwhite">
+
+            <table id="tbl1" class="table table-bordered table-striped table-hover" style="text-align:center">
+                <thead>
+                    <tr style="background-color: rgba(105, 108, 255, 0.16)">
+                        <th>#</th>
+                        <th>YORUM YAPAN</th>
+                        <th>YORUM YAPILAN ROTA</th>
+                        <th>TARİH</th>
+                        <th>DETAY</th>
+                        <th>DURUM</th>
+                        <th>AKTİF/PASİF</th>
+
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @{sayac = sayac + 1;}
+                        <td>@sayac</td>
+                        <td>@item.AppUser.Name @item.AppUser.Surname</td>
+                        <td>@item.Destination.Country - @item.Destination.City</td>
+                        <td>@(((DateTime)item.CommentDate).ToString("dd-MMMMMMM-yyyy HH:mm"))</td>
+                        <td>
+                            <a class="btn btn-info" href="/Admin/CommentAdmin/DetailCommentt/@item.CommentID">
+                                Yorumu Gör
+                            </a>
+                        </td>
+
+                        @if (@item.CommentStatus == true)
+                        {
+                            <td>
+                                <a class="btn btn-success" href="#">
+                                    Yorum Aktif
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" href="/Admin/CommentAdmin/PasifCommentt/@item.CommentID">
+                                    Yorumu Pasif Yap
+                                </a>
+                            </td>
+
+                        }
+                        @if (@item.CommentStatus == false)
+                        {
+                            <td>
+                                <a class="btn btn-danger" href="#">
+                                    Yorum Gizli
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-success" href="/Admin/CommentAdmin/AktifCommentt/@item.CommentID">
+                                    Yorumu Aktif Yap
+                                </a>
+                            </td>
+
+                        }
+
+                        @*<td>
+                            <a class="btn btn-danger" href="/Admin/CommentAdmin/DeleteCommentt/@item.CommentID">
+                                Yorumu Pasif Yap
+                            </a>
+                        </td>*@
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+<br />
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+<script>
+    $('#tbl1').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+</script>
+
+

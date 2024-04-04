@@ -1,0 +1,6 @@
+2024-02-08T16:34:00.7923858+03:00  [INF] Now listening on: "http://localhost:5000" (d826f4b8)
+2024-02-08T16:34:00.7967539+03:00  [INF] Now listening on: "https://localhost:5001" (d826f4b8)
+2024-02-08T16:34:00.7969045+03:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2024-02-08T16:34:00.7969250+03:00  [INF] Hosting environment: "Production" (c3307c92)
+2024-02-08T16:34:00.7969410+03:00  [INF] Content root path: "D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\TraversalCoreProje\bin\Debug\net5.0" (b5d60022)
+2024-02-08T16:34:18.0211454+03:00  [INF] Application is shutting down... (90f52c38)

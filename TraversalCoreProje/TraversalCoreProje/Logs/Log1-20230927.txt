@@ -1,0 +1,3 @@
+2023-09-27T07:53:54.7940325+03:00  [INF] Application started. Press Ctrl+C to shut down. (dcaefe54)
+2023-09-27T07:53:54.8019220+03:00  [INF] Hosting environment: "Development" (c3307c92)
+2023-09-27T07:53:54.8020095+03:00  [INF] Content root path: "D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\TraversalCoreProje" (b5d60022)

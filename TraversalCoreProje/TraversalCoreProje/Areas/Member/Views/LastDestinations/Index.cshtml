@@ -1,0 +1,66 @@
+﻿@using EntityLayer.Concrete
+@model List<Destination>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header" style="padding-bottom: 0">
+            <h3 class="mt-1 danger">Son Rotalar</h3>
+            <p class="text-sm">Traversal Şirketinin Yayınladığı Son 8 Seyahat Rotaları</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-xl-3 col-md-6 mb-xl-0">
+                        <div class="card card-blog card-plain" style="margin-bottom:30px;border: 1px solid #818EFF;border-radius: 0 0 5px 5px">
+                            <div class="position-relative">
+                                <a class="d-block shadow-xl border-radius-xl" href="/Destination/DestinationDetails/@item.DestinationID">
+                                    <img src="@item.Image" style="height:240px; width:360px" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                                </a>
+                            </div>
+                            <div class="card-body px-1" style="border: 1px solid #818EFF;border-radius: 0 0 5px 5px;">
+                                <p class="text-gradient danger mb-2 text-sm">@item.DayNight - @item.Price ₺</p>
+                                <a href="/Destination/DestinationDetails/@item.DestinationID" class="sehirAd">
+                                    <h5 class="info">
+                                        @item.City - @item.Country
+                                    </h5>
+                                </a>
+                                <p class="mb-2 text-sm" style="text-align:justify">
+                                    @item.Details1.Substring(0,100)...
+                                </p>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <a href="/Destination/DestinationDetails/@item.DestinationID" target="_blank" class="btn btn-info btn-sm mb-0">
+                                        Tur Detayları
+                                    </a>
+
+                                    @if(item.Status == true)
+                                    {
+                                        <a class="btn btn-success btn-sm mb-0" style="color:white">
+                                            Tur Aktif
+                                        </a>
+                                    }
+                                    @if (item.Status == false)
+                                    {
+                                        <a class="btn btn-danger btn-sm mb-0" style="color:white">
+                                            Tur Pasif
+                                        </a>
+                                    }                                    
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

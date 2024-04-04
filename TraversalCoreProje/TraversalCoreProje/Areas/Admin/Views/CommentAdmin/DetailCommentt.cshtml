@@ -1,0 +1,39 @@
+﻿@model EntityLayer.Concrete.Commentt
+
+@{
+    ViewData["Title"] = "DetailCommentt";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0.75rem 1.25rem; background-color: #566A7F;">
+                <h5 style="color:white" class="mb-0">YORUM DETAY SAYFASI</h5>
+            </div>
+            <br />
+            <div class="card-body">
+                <form>
+                    @Html.HiddenFor(x => x.CommentID)
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">YORUM YAPILAN TUR ROTASI</label>
+                        <input type="text" class="form-control" value="@ViewBag.rotaName" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">YORUM</label>
+                        <textarea id="basic-default-message"
+                                  class="form-control" asp-for="CommentContent"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">TARİH</label>
+                        @Html.TextBoxFor(x => x.CommentDate, "{0:dd.MM.yyyy}", new { @class = "form-control" })
+                    </div>
+
+                    <a href="/Admin/CommentAdmin/Index" class="btn btn-danger">Geri Dön</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

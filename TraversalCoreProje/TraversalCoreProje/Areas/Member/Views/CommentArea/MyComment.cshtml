@@ -1,0 +1,95 @@
+﻿@using EntityLayer.Concrete
+@model List<Commentt>
+
+
+@{
+    ViewData["Title"] = "MyComment";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+    int sayac = 0;
+}
+
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header" style="padding-bottom: 0">
+            <h3 class="mt-1 danger">Yorumlarım</h3>
+            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    <li><a data-action="close"><i class="ft-x"></i></a></li>
+                </ul>
+            </div>
+            <p class="text-sm">Yaptığınız yorumları aşağıdaki listeden görebilirsiniz. İsteseniz yaptığınız yorumu değiştirebilirsiniz.</p>
+        </div>
+        <div class="card-content collapse show">
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table id="tbl1" class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th> 
+                                <th>Yorum Yapılan Tur</th>
+                                <th>Tarih</th>
+                                <th>Durum</th>
+                                <th>Detay</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                sayac++;
+
+
+                                <tr>
+                                    <th scope="row">@sayac</th>
+                                    <td>@item.Destination.Country  -  @item.Destination.City</td>
+                                    <td> @(((DateTime)item.CommentDate).ToString("dd-MMMMMMM-yyyy"))</td>
+
+                                    @if (@item.CommentStatus == true)
+                                    {
+                                        <td>
+                                            <span class="btn btn-success">Yorum Aktif </span>
+                                        </td>
+                                    }
+                                    @if (@item.CommentStatus == false)
+                                    {
+                                        <td>
+                                            <span class="btn btn-danger">Yorum Kapalı</span>
+                                        </td>
+                                    }
+
+                                    <td><a href="/Member/CommentArea/DetailCommentt/@item.CommentID" class="btn btn-primary">Detay</a></td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+<script>
+    $('#tbl1').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+</script>
+

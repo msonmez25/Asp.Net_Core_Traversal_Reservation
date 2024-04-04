@@ -1,0 +1,41 @@
+﻿@model CreateDestinationCommand
+@{
+    ViewData["Title"] = "AddDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0.75rem 1.25rem; background-color: lightblue;">
+                <h5 class="mb-0">YENİ TUR EKLEME SAYFASI (CQRS)</h5>
+            </div>
+            <br />
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">ŞEHİR</label>
+                        <input type="text" class="form-control" asp-for="City" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">GÜN / GECE</label>
+                        <input type="text" class="form-control" asp-for="DayNight" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">FİYAT</label>
+                        <input type="text" class="form-control" asp-for="Price" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">KAPASİTE</label>
+                        <input type="text" class="form-control" asp-for="Capacity" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Tur Ekle</button>
+                    <a href="/Admin/DestinationCQRS/Index" class="btn btn-danger btn-icon-text"><i class="mdi mdi-reply"></i>İptal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

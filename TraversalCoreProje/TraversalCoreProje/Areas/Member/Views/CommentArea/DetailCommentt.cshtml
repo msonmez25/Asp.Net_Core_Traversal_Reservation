@@ -1,0 +1,42 @@
+﻿@model EntityLayer.Concrete.Commentt
+
+@{
+    ViewData["Title"] = "DetailCommentt";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header" style="padding-bottom: 0">
+            <h3 class="mt-1 danger">Yorum Detay Sayfası</h3>
+            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                    <li><a data-action="close"><i class="ft-x"></i></a></li>
+                </ul>
+            </div>
+            <p class="text-sm">Yorumunu sayfadan güncelleyebilirsiniz. Kapalı olan yorumunuzu güncelleyerek aktif hale getirebilirsiniz.</p>
+        </div>
+
+        <div class="card-body">
+
+            <form method="post" >
+                @Html.HiddenFor(x => x.CommentID)
+
+                @Html.Label("Yorumunuz")
+                <textarea id="basic-default-message"
+                          class="form-control" asp-for="CommentContent"></textarea>
+                <br />          
+                <button class="btn btn-info">Yorumu Güncelle</button>
+                <a href="/Member/CommentArea/MyComment" class="btn btn-danger">İptal</a>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,103 @@
+﻿ @model IEnumerable<BookingHotelSearchViewModel.Result>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+
+<div class="content-wrapper">
+    <div class="card" style="background-color: ghostwhite">
+
+        <h5 class="card-header" style="background-color: #566A7F;color:white">APi HOTEL REZERVASYON LİSTESİ</h5>
+        <br />
+        <div class="table-responsive text-nowrap" style="padding: 0.75rem 1.25rem;background-color: ghostwhite">
+
+            <table id="tbl1" class="table table-bordered table-striped table-hover" style="text-align:center">
+                <thead>
+                    <tr style="background-color: rgba(105, 108, 255, 0.16)">
+                        <th>#</th>
+                        <th>HOTEL ADI</th>
+                        <th>ŞEHİR</th>
+                        <th>PUANI</th>
+                        <th>DEĞERLENDİRME</th>
+
+                        <th>DETAYLAR</th>
+
+
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    sayac++;
+                    <tr>
+
+                        <td>@sayac</td>
+                        <td>@item.name</td>
+                        <td>@item.wishlistName</td>
+                        <td>@item.reviewScore</td>
+
+                        @{
+                            if (item.reviewScoreWord == "Exceptional")
+                            {
+                                <td>Olağanüstü</td>
+                            }
+                            if (item.reviewScoreWord == "Superb")
+                            {
+                                <td>Mükemmel</td>
+                            }
+                            if (item.reviewScoreWord == "Very good")
+                            {
+                                <td>Çok İyi</td>
+                            }
+                            if (item.reviewScoreWord == "Good")
+                            {
+                                <td>İyi</td>
+                            }
+                            
+                        }
+
+
+                        <td>
+                            <a class="btn btn-success" href="@item.photoMainUrl" target="_blank">                               
+                               Görsel
+                            </a>
+                        </td>
+
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+<br />
+
+<a href="/Admin/VisitorApi/AddVisitorApi" class="btn btn-primary" style="color: #fff; background-color: #696cff; border-color: #696cff;">Yeni Ziyaretçi Ekle</a>
+
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+<script>
+    $('#tbl1').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+</script>
+
+
+
+
+

@@ -1,0 +1,191 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<h2>Şehir - Ülke İşlemleri</h2>
+<br />
+<button type="button" id="btngetlist" class="btn btn-info">Rotaları Listesi</button>
+<button type="button" id="btngetid" class="btn btn-primary">Rota Getir</button>
+<button type="button" id="btnaddrota" class="btn btn-warning">Rota Ekle</button>
+<button type="button" id="btndeleterota" class="btn btn-danger">Rota Sil</button>
+<button type="button" id="btnupdaterota" class="btn btn-success">Rota Güncelle</button>
+
+<br />
+<br />
+
+<div id="rotaList">
+    <h3>Rotalar</h3>
+    <br />
+</div>
+<hr />
+<br />
+<div>
+    <input type="text" id="txtid" placeholder="Rota için ID giriniz" class="form-control addInput" />
+</div>
+<br />
+<div id="destinationlistbyid">
+
+</div>
+<hr />
+
+<div>
+    <input type="text" id="txtdeleteid" placeholder="Silinecek Rota için ID giriniz" class="form-control addInput" />
+</div>
+<br />
+<hr />
+
+<div>
+    <h3>Güncellenecek Rota</h3>
+    <br />
+    <input type="text" id="txtupdateid" placeholder="Yeni Güncellenecek Rota için ID giriniz" class="form-control addInput" />
+    <input type="text" id="txtcityname" placeholder="Yeni Şehir adınını giriniz" class="form-control addInput" />
+    <input type="text" id="txtcountryname" placeholder="Yeni Ülke adınını giriniz" class="form-control addInput" />
+    <input type="text" id="txtdaynightinfo" placeholder="Yeni Gün Gece giriniz" class="form-control addInput" />
+    <input type="text" id="txtpriceinfo" placeholder="Yeni Fiyat giriniz" class="form-control addInput" />
+    <input type="text" id="txtcapacityinfo" placeholder="Yeni Kapasite giriniz" class="form-control addInput" />
+</div>
+<br />
+<hr />
+
+<br />
+<div>
+    <h3>Yeni Eklenecek Rota</h3>
+    <br />
+    <input type="text" id="txtcity" placeholder="Şehir adınını giriniz" class="form-control addInput" />
+    <input type="text" id="txtcountry" placeholder="Ülke adınını giriniz" class="form-control addInput" />
+    <input type="text" id="txtdaynight" placeholder="Gün Gece giriniz" class="form-control addInput" />
+    <input type="text" id="txtprice" placeholder="Fiyat giriniz" class="form-control addInput" />
+    <input type="text" id="txtcapacity" placeholder="Kapasite giriniz" class="form-control addInput" />
+</div>
+
+
+
+
+<script>
+
+    const txtcitY = document.querySelector("#txtcity");
+    const txtcountrY = document.querySelector("#txtcountry");
+    const txtdaynighT = document.querySelector("#txtdaynight");
+    const txtpricE = document.querySelector("#txtprice");
+    const txtcapacitY = document.querySelector("#txtcapacity");
+    const txtiD = document.querySelector("#txtid");
+
+
+    const txtcityUpdate = document.querySelector("#txtcityname");
+    const txtcountryUpdate = document.querySelector("#txtcountryname");
+    const txtdaynightUpdate = document.querySelector("#txtdaynightinfo");
+    const txtpriceUpdate = document.querySelector("#txtpriceinfo");
+    const txtcapacityUpdate = document.querySelector("#txtcapacityinfo");
+    const txtiDUpdate = document.querySelector("#txtupdateid");
+
+    $("#btngetlist").click(function () {
+        $.ajax({
+            contentType: "applicaion/json",
+            dataType: "json",
+            type: "GET",
+            url: "/Admin/CityAdmin/RotaList/",
+            success: function (func) {
+                let w = jQuery.parseJSON(func);
+                console.log(w);
+                let tablehtml = "<table class=table table-bordered><tr><th>Rota ID</th><th>Ülke Adı</th><th>Şehir Adı</th><th>Gün Gece</th><th>Fiyat</th></tr>";
+                $.each(w, (index, value) => {
+                    tablehtml += `<tr><td>${value.DestinationID}</td> <td>${value.Country}</td> <td>${value.City}</td><td>${value.DayNight}</td><td>${value.Price}₺</td></tr>`
+                });
+                tablehtml += "</table>";
+                $("#rotaList").html(tablehtml);
+            }
+        });
+    });
+
+    $("#btnaddrota").click(function () {
+        let rotavalues = {
+            City: $("#txtcity").val(),
+            Country: $("#txtcountry").val(),
+            DayNight: $("#txtdaynight").val(),
+            Price: $("#txtprice").val(),
+            Capacity: $("#txtcapacity").val()
+        };
+        $.ajax({
+            type: "post",
+            url: "/Admin/CityAdmin/AddRota/",
+            data: rotavalues,
+            success: function (func) {
+                let result = jQuery.parseJSON(func);
+                alert("Rota bilgileri başarılı bir şeklide eklendi.");
+                txtcitY.value = "";
+                txtcountrY.value = "";
+                txtdaynighT.value = "";
+                txtpricE.value = "";
+                txtcapacitY.value = "";
+            }
+        });
+
+    });
+
+    $("#btngetid").click(x => {
+        let id = $("#txtid").val();
+
+        $.ajax({
+            contentType: "applicaion/json",
+            dataType: "json",
+            type: "GET",
+            url: "/Admin/CityAdmin/GetRotaByID/",
+            data: { DestinationID: id },
+
+            success: function (func2) {
+                let result = jQuery.parseJSON(func2);
+                console.log(result);
+                let htmlstr = `<table class=table table-bordered><tr><th>Şehir Adı</th><th>Ülke Adı</th><th>Gün Gece</th><th>Fiyat</th><th>Kapasite</th></tr><tr><td>${result.City}</td><td>${result.Country}</td><td>${result.DayNight}</td><td>${result.Capacity}</td></tr></table>`;
+                $("#destinationlistbyid").html(htmlstr);
+            },
+            error: function (result) {
+                alert("Aranılan kayıt bulunamadı.");
+                txtiD.value = "";
+            }
+
+
+        });
+    });
+
+    $("#btndeleterota").click(x => {
+        let id = $("#txtdeleteid").val();
+
+        $.ajax({
+            url: "/Admin/CityAdmin/DeleteRota/" + id,
+            type: "post",
+            contentType: "applicaion/json",
+            dataType: "json",
+            success: function (func3) {
+                alert(id + " ID numaralı kayıt silindi.");
+            }
+        });
+    });
+
+    $("#btnupdaterota").click(function () {
+        let values = {
+            DestinationID: $("#txtupdateid").val(),
+            City: $("#txtcityname").val(),
+            Country: $("#txtcountryname").val(),
+            DayNight: $("#txtdaynightinfo").val(),
+            Price: $("#txtpriceinfo").val(),
+            Capacity: $("#txtcapacityinfo").val()
+        };
+
+        $.ajax({
+            type: "post",
+            url: "/Admin/CityAdmin/UpdateRota/",
+            data: values,
+            success: function (func4) {
+                let result = jQuery.parseJSON(func4);
+                alert("Güncelleme işlemi başarılı bir şeklide tamamlandı.");
+                txtcityUpdate.value = "";
+                txtcountryUpdate.value = "";
+                txtdaynightUpdate.value = "";
+                txtpriceUpdate.value = "";
+                txtcapacityUpdate.value = "";
+            }
+        });
+    });
+
+</script>

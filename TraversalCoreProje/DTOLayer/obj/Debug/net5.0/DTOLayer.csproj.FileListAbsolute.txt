@@ -1,0 +1,11 @@
+D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\DTOLayer\bin\Debug\net5.0\DTOLayer.deps.json
+D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\DTOLayer\bin\Debug\net5.0\DTOLayer.dll
+D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\DTOLayer\bin\Debug\net5.0\DTOLayer.pdb
+D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\DTOLayer\obj\Debug\net5.0\DTOLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\DTOLayer\obj\Debug\net5.0\DTOLayer.AssemblyInfoInputs.cache
+D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\DTOLayer\obj\Debug\net5.0\DTOLayer.AssemblyInfo.cs
+D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\DTOLayer\obj\Debug\net5.0\DTOLayer.csproj.CoreCompileInputs.cache
+D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\DTOLayer\obj\Debug\net5.0\DTOLayer.dll
+D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\DTOLayer\obj\Debug\net5.0\refint\DTOLayer.dll
+D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\DTOLayer\obj\Debug\net5.0\DTOLayer.pdb
+D:\YAZILIM_EGİTİM_PROJELER\TraversalCore5\TraversalCoreProje\DTOLayer\obj\Debug\net5.0\ref\DTOLayer.dll

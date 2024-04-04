@@ -1,0 +1,47 @@
+﻿@using EntityLayer.Concrete
+@model List<Destination>
+
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header" style="padding-bottom: 0">
+            <h3 class="mt-1 danger">Son Rotalar</h3>
+            <p class="text-sm">Traversal Şirketinin En Son Eklenen Seyahat Rotaları</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-xl-3 col-md-6 mb-xl-0">
+                        <div class="card card-blog card-plain" style="margin-bottom:30px;border: 1px solid #818EFF;border-radius: 0 0 5px 5px">
+                            <div class="position-relative">
+                                <a class="d-block shadow-xl border-radius-xl" href="/Destination/DestinationDetails/@item.DestinationID">
+                                    <img src="@item.Image" style="height:240px; width:360px" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                                </a>
+                            </div>
+                            <div class="card-body px-1" >
+                                <p class="text-gradient danger mb-2 text-sm">@item.DayNight - @item.Price ₺</p>
+                                <a href="/DetailDestination/DestinationDetails/@item.DestinationID" class="sehirAd" >
+                                    <h5 class="info">
+                                        @item.City - @item.Country
+                                    </h5>
+                                </a>
+                                <p class="mb-4 text-sm" style="text-align:justify">
+                                    @item.Details1.Substring(0,100)...
+                                </p>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <a href="/DetailDestination/DestinationDetails/@item.DestinationID" target="_blank" class="btn btn-info btn-sm mb-0">
+                                        Tur Detayları
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

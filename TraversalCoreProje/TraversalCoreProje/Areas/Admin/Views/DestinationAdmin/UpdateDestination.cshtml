@@ -1,0 +1,96 @@
+﻿@model EntityLayer.Concrete.Destination
+
+@{
+    ViewData["Title"] = "UpdateDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl">
+        <div class="card mb-4">
+            <div class="card-header " style="padding: 0.75rem 1.25rem; background-color: #566A7F;">
+                <h5 style="color:white" class="mb-0">ROTA GÜNCELLEME SAYFASI</h5>
+            </div>
+            <br />
+            <div class="card-body">
+                <form method="post">
+                    <div class="row">
+                        @Html.HiddenFor(x=>x.DestinationID)
+
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="basic-default-message">REHBER</label>
+                            @Html.DropDownListFor(x => x.GuideID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control form-select" })
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="basic-default-fullname">ÜLKE</label>
+                            <input type="text" class="form-control" asp-for="Country" />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="basic-default-fullname">ŞEHİR</label>
+                            <input type="text" class="form-control" asp-for="City" />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="basic-default-fullname">GÜN GECE</label>
+                            <input type="text" class="form-control" asp-for="DayNight" />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="basic-default-fullname">FİYAT</label>
+                            <input type="text" class="form-control" asp-for="Price" />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="basic-default-fullname">SİTE GÖRSEL LİNK</label>
+                            <input type="text" class="form-control" asp-for="Image" />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="basic-default-fullname">KAPASİTE</label>
+                            <input type="text" class="form-control" asp-for="Capacity" />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="basic-default-fullname">KAPAK GÖRSELİ LİNK</label>
+                            <input type="text" class="form-control" asp-for="CoverImage" />
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-fullname">AÇIKLAMA ÜST</label>
+                            <textarea id="basic-default-message"
+                                      class="form-control" asp-for="Details1" rows="10"></textarea>
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="basic-default-fullname">SOL RESİM</label>
+                            <input type="text" class="form-control" asp-for="Image2" />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label class="form-label" for="basic-default-fullname">SAĞ RESİM</label>
+                            <input type="text" class="form-control" asp-for="Image3" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-message">ARA CÜMLE</label>
+                            <input type="text" class="form-control" asp-for="Description" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-fullname">AÇIKLAMA ALT</label>
+                            <textarea id="basic-default-message"
+                                      class="form-control" asp-for="Details2" rows="10"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="basic-default-message">VİDEO LİNK</label>
+                            <input type="text" class="form-control" asp-for="Video" />
+                        </div>
+
+
+
+
+                        <div class="mt-2">
+                            <button type="submit" class="btn btn-primary">Güncelle</button>
+                            <a href="/Admin/DestinationAdmin/Index" class="btn btn-danger btn-icon-text"><i class="mdi mdi-reply"></i>İptal</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

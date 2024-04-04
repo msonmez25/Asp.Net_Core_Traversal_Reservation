@@ -1,0 +1,104 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@using EntityLayer.Concrete
+@model List<Destination>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+    int sayac = 0;
+}
+
+
+<!-- Basic Tables start -->
+
+    <div class="col-12">
+        <div class="card">
+        <div class="card-header" style="padding-bottom: 0">
+            <h3 class="mt-1 danger">@localizer["Tur Rotalarımız"]</h3>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            <p class="text-sm">
+                @localizer["Alanında uzman rehberlerimiz eşliğinde Balkanlardan Orta Asya'ya, Doğu Avrupa'dan Anadolu'nun dört bir yanına en uygun fiyatlarla sunduğumuz tur listemize ve tur detaylarına aşağıdaki tablodan erişebilirsiniz."]
+                </p>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                  
+                    <div class="table-responsive">
+                        <table id="tbl1" class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Şehir</th>
+                                    <th>Ülke</th>
+                                    <th>Süre</th>
+                                    <th>Kapasite</th>
+                                    <th>Fiyat</th>
+                                    <th>Durum</th>
+                                    <th>Detaylar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    sayac++;
+
+
+                                    <tr>
+                                        <th scope="row">@sayac</th>
+                                        <td>@item.City</td>
+                                        <td>@item.Country</td>
+                                        <td>@item.DayNight</td>
+                                        <td>@item.Capacity</td>
+                                        <td>@item.Price ₺</td>
+
+                                        @if (@item.Status == true)
+                                        {
+                                            <td>
+                                                <span class="btn btn-success">Tur Aktif </span>
+                                            </td>
+                                        }
+                                        @if (@item.Status == false)
+                                        {
+                                            <td>
+                                                <span class="btn btn-danger">Tur Kapalı</span>
+                                            </td>
+                                        }
+
+                                        <td><a href="/DetailDestination/DestinationDetails/@item.DestinationID" target="_blank" class="btn btn-primary">Detay</a></td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Basic Tables end -->
+
+
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+<script>
+    $('#tbl1').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+</script>

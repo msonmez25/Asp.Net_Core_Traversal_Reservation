@@ -1,0 +1,84 @@
+﻿@model TraversalCoreProje.Models.UserSignInViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="~/miri-ui/docs/assets/images/icons8_airplane_take_off_3.ico" type="image/x-icon">
+    <title>Traversal Kullanıcı Giriş Ekranı</title>
+
+    <!-- Vendor css -->
+    <link rel="stylesheet" href="~/miri-ui/src/vendors/mdi/font/css/materialdesignicons.min.css">
+
+    <!-- Base css with customised bootstrap included -->
+    <link rel="stylesheet" href="~/miri-ui/src/css/miri-ui-kit-free.css">
+
+    <!-- Stylesheet for demo page specific css -->
+    <link rel="stylesheet" href="~/miri-ui/docs/assets/css/demo.css">
+</head>
+<body class="login-page">
+    <header class="miri-ui-kit-header header-no-bg-img header-navbar-only">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+            <div class="container">
+                
+                <a class="navbar-brand" href="/Default/Index" style="font-size:30px">
+                    <img src="~/miri-ui/docs/assets/images/clipart2903647 (1).png" alt="Your logo" title="Your logo" style="height:60px;" />
+
+                    Traversal
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#miriUiKitNavbar"
+                        aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="miriUiKitNavbar">
+                    <div class="navbar-nav ml-auto">
+
+                        <form action="/Default/Index/" class="form-inline ml-lg-3">
+                            <button class="btn btn-danger">Siteye Git</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="card login-card">
+        <div class="card-body">
+            <h3 class="text-center text-white font-weight-light mb-4">Giriş Sayfası</h3>
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" placeholder="Kullanıcı Adı" class="form-control" asp-for="username">
+                    <span asp-validation-for="username" class="text-info"></span>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Şifreniz" class="form-control" asp-for="password">
+                    <span asp-validation-for="password" class="text-info"></span>
+                </div>
+
+                <input type="submit" value="Giriş Yap" class="btn btn-danger btn-block mb-3">
+                <br />
+                <a href="/Login/SignUp" class="btn btn-success btn-block mb-3">Kayıt Ol</a>
+            </form>
+
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <nav class="navbar navbar-dark bg-transparent navbar-expand footer-navbar d-block d-sm-flex text-center">
+                <span class="navbar-text">&copy; @DateTime.Now.Year Traversal. Tüm hakları saklıdır.</span>
+                <div class="navbar-nav ml-auto justify-content-center">
+                    <a href="/Contact/Index" class="nav-link">İletişim</a>
+                </div>
+            </nav>
+        </div>
+    </footer>
+    <script src="~/miri-ui/src/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="~/miri-ui/src/vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/miri-ui/src/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+

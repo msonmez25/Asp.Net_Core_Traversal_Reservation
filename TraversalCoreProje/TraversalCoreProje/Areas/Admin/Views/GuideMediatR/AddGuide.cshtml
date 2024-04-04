@@ -1,0 +1,34 @@
+﻿@model CreateGuideCommand
+@{
+    ViewData["Title"] = "AddGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xl">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0.75rem 1.25rem; background-color: lightblue;">
+                <h5 class="mb-0">YENİ REHBER EKLEME SAYFASI</h5>
+            </div>
+            <br />
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">ADI SOYADI</label>
+                        <input type="text" class="form-control" asp-for="Name" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">AÇIKLAMA</label>
+                        <input type="text" class="form-control" asp-for="Description" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Rehber Ekle</button>
+                    <a href="/Admin/GuideMediatR/Index" class="btn btn-danger btn-icon-text"><i class="mdi mdi-reply"></i>İptal</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

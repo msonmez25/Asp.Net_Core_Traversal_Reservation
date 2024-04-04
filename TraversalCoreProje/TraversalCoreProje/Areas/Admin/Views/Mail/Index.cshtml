@@ -1,0 +1,44 @@
+﻿@model TraversalCoreProje.Models.MailRequest
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xl">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0.75rem 1.25rem; background-color: lightblue;">
+                <h5 class="mb-0">MAİL GÖNDERME SAYFASI</h5>
+            </div>
+            <br />
+            <div class="card-body">
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">ALICI MAİL ADRESİ</label>
+                        <input type="text" class="form-control" asp-for="ReceiverMail" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">KONU</label>
+                        <input type="text" class="form-control" asp-for="Subject" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">KONU</label>
+                        <input type="text" class="form-control" asp-for="Subject" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">İÇERİK</label>
+                        <textarea id="basic-default-message"
+                                  class="form-control" asp-for="Body"></textarea>                        
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">GÖNDER</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

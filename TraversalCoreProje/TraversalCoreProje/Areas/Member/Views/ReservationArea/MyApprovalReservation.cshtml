@@ -1,0 +1,66 @@
+﻿@using EntityLayer.Concrete
+@model List<Reservation>
+
+@{
+    ViewData["Title"] = "MyApprovalReservation";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+    int sayac = 0;
+}
+
+
+
+
+<!-- Basic Tables start -->
+
+    <div class="col-12">
+        <div class="card">
+        <div class="card-header" style="padding-bottom: 0">
+            <h3 class="mt-1 danger">Onay Bekleyen Rezervasyonlarım</h3>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            <p class="text-sm">Web Sitemiz <code>Traversal</code> üzerinden yapmış olduğunuz onay bekleyen rezervasyon listesini aşağıda görebilirsiniz</p>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                   
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Ülke</th>
+                                    <th>Şehir</th>
+                                    <th>Kişi Sayısı</th>
+                                    <th>Rezervasyon Tarihi</th>
+                                    <th>Durum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    sayac++;
+                                    <tr>
+                                        <th scope="row">@sayac</th>
+                                        <td>@item.Destination.Country</td>
+                                        <td>@item.Destination.City</td>
+                                        <td>@item.PersonCount</td>
+                                        <td>@(((DateTime)item.ReservationDate).ToString("dd-MMMMMMMM-yyyy"))</td>
+                                        <td>@item.Status</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Basic Tables end -->

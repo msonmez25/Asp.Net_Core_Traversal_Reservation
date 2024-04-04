@@ -1,0 +1,108 @@
+﻿
+
+
+<div class="col-xl-4 col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title danger">Profil Bilgileri</h4>
+            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-content">            
+            <div class="table-responsive">
+                <table class="table table-borderless mb-0">
+                    <tbody>
+                      
+                        <tr>
+                            <td>
+                                <h5>Ad</h5>
+                            </td>
+                            <td class="danger text-right">@ViewBag.memberName</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Soyad</h5>
+                            </td>
+                            <td class="danger text-right">@ViewBag.memberSurName</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Cinsiyet</h5>
+                            </td>
+                            <td class="danger text-right">@ViewBag.memberGender</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5 >Telefon</h5>
+                            </td>
+                            <td class="danger text-right">@ViewBag.memberPhone</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5 >Mail</h5>
+                            </td>
+                            <td class="danger text-right">@ViewBag.memberMail</td>
+                        </tr>
+                        
+                      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title danger">İstatistikler</h4>
+            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-content">
+            <div class="table-responsive">
+                <table class="table table-borderless mb-0">
+                    <tbody>
+
+                        <tr>
+                            <td>
+                                <h5>Aktif Rezervasyon Sayım</h5>
+                            </td>
+                            <td class="danger text-right">@ViewBag.Aktif</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Geçmiş Rezervasyon Sayım</h5>
+                            </td>
+                            <td class="danger text-right">@ViewBag.Gecmis</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Onayda Rezervasyon Sayım</h5>
+                            </td>
+                            <td class="danger text-right">@ViewBag.Onayda</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Toplam Rota Sayısı</h5>
+                            </td>
+                            <td class="danger text-right">@ViewBag.DestinationCount</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Toplam Rehber Sayısı</h5>
+                            </td>
+                            <td class="danger text-right">@ViewBag.GuideCount</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

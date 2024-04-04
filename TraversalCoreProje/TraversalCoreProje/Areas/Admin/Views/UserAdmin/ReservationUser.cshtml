@@ -1,0 +1,94 @@
+﻿@using EntityLayer.Concrete
+@model List<Reservation>
+@{
+    ViewData["Title"] = "ReservationUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+
+<div class="content-wrapper">
+    <div class="card" style="background-color: ghostwhite">
+
+        <h5 class="card-header" style="background-color: #566A7F;color:white">KULLANICININ REZERVASYONLARI</h5>
+        <br />
+        <div class="table-responsive text-nowrap" style="padding: 0.75rem 1.25rem;background-color: ghostwhite">
+
+            <table id="tbl1" class="table table-bordered" style="text-align:center">
+                <thead>
+                    <tr style="background-color: rgba(105, 108, 255, 0.16)">
+                        <th>#</th>
+                        <th>MİSAFİR AD SOYAD</th>
+                        <th>ÜLKE</th>
+                        <th>ŞEHİR</th>
+                        <th>KİŞİ SAYISI</th>
+                        <th>TARİH</th>
+                        <th>DURUMU</th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+            <tr>
+                @{sayac = sayac + 1;}
+                <td>@sayac</td>
+                <td>@ViewBag.Name</td>
+                <td>@item.Destination.Country</td>
+                <td>@item.Destination.City</td>
+                <td>@item.PersonCount</td>
+                <td>@(((DateTime)item.ReservationDate).ToString("dd-MMM-yyyy HH:mm"))</td>
+
+                        @if (item.Status == "ONAYLANDI")
+                        {
+                            <td>
+                                <a class="btn btn-success" href="#">
+                                    <i class="tf-icons bx bx-check"></i> @item.Status
+                                </a>
+                            </td>
+                        }
+                        @if (item.Status == "ONAY BEKLİYOR")
+                        {
+                            <td>
+                                <a class="btn btn-warning" href="#" >
+                                    <i class="tf-icons bx bx-timer"></i> @item.Status
+                                </a>
+                            </td>
+                        }
+                        @if (item.Status == "İPTAL EDİLDİ")
+                        {
+                            <td>
+                                <a class="btn btn-danger" href="#">
+                                    <i class="tf-icons bx bx-x"></i> @item.Status
+                                </a>
+                            </td>
+                        }
+
+            </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+  
+</div>
+<br />
+<a href="/Admin/UserAdmin/Index" class="btn btn-danger btn-icon-text"><i class="mdi mdi-reply"></i>Kullanıcı Listesine Dön</a>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+<script>
+    $('#tbl1').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+        }
+    });
+</script>
+

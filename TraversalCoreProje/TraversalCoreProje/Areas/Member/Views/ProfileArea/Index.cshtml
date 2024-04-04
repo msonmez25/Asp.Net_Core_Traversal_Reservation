@@ -1,0 +1,60 @@
+﻿@model TraversalCoreProje.Areas.Member.Models.UserEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+
+
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-header" style="padding-bottom: 0">
+            <h3 class="mt-1 danger">Profil Düzenleme Sayfası</h3>
+            <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                </ul>
+            </div>
+            <p class="text-sm">Profilinize ait bilgilerinizi bu sayfadan güncelleyebilirsiniz.</p>
+        </div>
+
+        <div class="card-body">
+
+               
+
+                <form method="post" enctype="multipart/form-data">
+                    @Html.Label("Adınız")
+                    <input type="text" asp-for="name" class="form-control" required="" />
+                    <br />
+                    @Html.Label("Soyadınız")
+                <input type="text" asp-for="surname" class="form-control" required="" />
+                    <br />
+                    @Html.Label("Mail Adresiniz")
+                <input type="text" asp-for="mail" class="form-control" required="" />
+                    <br />
+                    @Html.Label("Şifreniz")
+                <input type="password" asp-for="password" class="form-control" required="" />
+                    <br />
+                    @Html.Label("Şifrenizi Tekrar Giriniz")
+                <input type="password" asp-for="confirmpassword" class="form-control" required="" />
+                    <br />
+                    @Html.Label("Telefon Numaranız")
+                <input type="text" asp-for="phonenumber" class="form-control" required="" />
+                    <br />
+                    @Html.Label("Görsel Link")
+                    @* <div class="form-control">
+                        <label>Resim Seçin</label>
+                        <input type="file" asp-for="Image" />
+                    </div> *@
+                <input type="text" asp-for="imageurl" class="form-control" required="" />
+                    <br />
+                    <button class="btn btn-info">Bilgileri Güncelle</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+

@@ -1,0 +1,60 @@
+﻿@model EntityLayer.Concrete.Reservation
+@{
+    ViewData["Title"] = "NewReservation";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+
+
+
+
+
+
+    <div class="col-12">
+        <div class="card">
+        <div class="card-header" style="padding-bottom: 0">
+            <h3 class="mt-1 danger">Yeni Rezervasyon</h3>
+                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                    </ul>
+                </div>
+            <p class="text-sm">Web Sitemiz <code>Traversal</code> üzerinde yer alan aktif turlar içerisinden yeni bir rezervasyonu aşağıdan yapabilirsiniz.</p>
+            </div>
+            <div class="card-content collapse show">
+                <div class="card-body">
+                   
+                  
+
+                    <form method="post">
+                        <div class="form-group">
+                        @Html.Label("Lokasyon")
+                        @Html.DropDownListFor(x => x.DestinationID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Kişi Sayısı")
+                            <input type="text" asp-for="PersonCount" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Tarih")
+                            <input type="date" asp-for="ReservationDate" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Varsa Eklemek İstedikleriniz")
+                            <textarea type="text" asp-for="Description" rows="5" cols="10" class="form-control"></textarea>
+                        </div>
+
+                        <button class="btn btn-info">Rezervasyon Yap</button>
+                      
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+

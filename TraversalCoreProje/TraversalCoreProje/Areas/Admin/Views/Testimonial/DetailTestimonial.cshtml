@@ -1,0 +1,44 @@
+﻿@model EntityLayer.Concrete.Testimonial
+@{
+    ViewData["Title"] = "DetailTestimonial";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0.75rem 1.25rem;background-color: #566A7F;">
+                <h5 style="color:white" class="mb-0">MİSAFİR MEMNUNİYET YORUMLARI DETAY SAYFASI</h5>
+            </div>
+            <br />
+            <div class="card-body">
+                <form method="post">
+                    @Html.HiddenFor(x => x.TestimonialID)
+
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">AD SOYAD</label>
+                        <input type="text" class="form-control" asp-for="Client" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">AÇIKLAMA</label>
+                        <textarea id="basic-default-message"
+                                  class="form-control" asp-for="Comment" rows="5"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="basic-default-fullname">GÖRSEL</label>
+                        <input type="text" class="form-control" asp-for="ClientImage" />
+                    </div>
+
+                    <br />
+                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                    <a href="/Admin/Testimonial/Index" class="btn btn-danger">Geri Dön</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,94 @@
+﻿@model TraversalCoreProje.Areas.Member.Models.UserEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        
+        <div class="card mb-4">
+           
+            <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0.75rem 1.25rem; background-color: #566A7F">
+                <h5 style="color:white" class="mb-0">PROFİL SAYFASI</h5>
+            </div>
+            <br />
+            <!-- Account -->
+            <div class="card-body">
+                <div class="d-flex align-items-start align-items-sm-center gap-4">
+                    <img src="@Model.imageurl"
+                         alt="user-avatar"
+                         class="d-block rounded"
+                         height="100"
+                         width="100"
+                         id="uploadedAvatar" />
+                    <div class="button-wrapper">                       
+                        <p class="text-muted mb-0">@Model.name @Model.surname</p>
+                        <p class="text-muted mb-0">Admin</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-0" />
+            <div class="card-body">
+                <form method="post">
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label for="firstName" class="form-label">Adınız</label>
+                            <input type="text" asp-for="name" class="form-control" required="" />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="email" class="form-label">Soyadınız</label>
+                            <input type="text" asp-for="surname" class="form-control" required="" />
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="email" class="form-label">MAİL ADRESİNİZ</label>
+                            <input type="text" asp-for="mail" class="form-control" required="" />
+                        </div>
+                        
+                        <div class="mb-3 col-md-6">
+                            <label for="email" class="form-label">CİNSİYETİNİZ</label>
+                            <input type="text" asp-for="gender" class="form-control"  />
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label for="email" class="form-label">Telefon Numaranız</label>
+                            <input type="text" asp-for="phonenumber" class="form-control"/>
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label for="email" class="form-label">GÖRSEL LİNK</label>
+                            <input type="text" asp-for="@Model.imageurl" class="form-control" />
+                        </div>
+
+                        <div class="mb-3 col-md-6">
+                            <label for="email" class="form-label">ŞİFRENİZ</label>
+                            <input type="password" asp-for="password" class="form-control" required=""/>
+                        </div>
+                       
+                        <div class="mb-3 col-md-6">
+                            <label for="email" class="form-label">ŞİFRE Tekrar</label>
+                            <input type="password" asp-for="confirmpassword" class="form-control" required="" />
+                        </div>
+                     
+                    </div>
+                    <div class="mt-2">
+                        <button type="submit" class="btn btn-primary">Bilgilerimi Güncelle</button>                        
+                    </div>
+                </form>
+            </div>
+            <!-- /Account -->
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>

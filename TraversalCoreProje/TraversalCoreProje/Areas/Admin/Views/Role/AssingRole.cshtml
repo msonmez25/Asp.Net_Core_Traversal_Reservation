@@ -1,0 +1,41 @@
+﻿@model List<RoleAssingRoleViewModel>
+@{
+    ViewData["Title"] = "AssingRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0.75rem 1.25rem; background-color: lightblue;">
+                <h5 class="mb-0">KULLANICI ROL DÜZENLEME SAYFASI</h5>
+            </div>
+            <br />
+            <div class="card-body">
+
+
+
+                <form method="post">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div class="form-check">
+                            <input type="hidden" asp-for="@Model[i].RoleId" />
+                            <input type="hidden" asp-for="@Model[i].RoleName" />
+
+                            <input type="checkbox" asp-for="@Model[i].RoleExist" class="form-check-input" />
+                            <label class="form-check-label" for="@Model[i].RoleExist">@Model[i].RoleName</label>
+                        </div>
+                    }
+                    <br />
+                    
+                    <button type="submit" class="btn btn-primary">Güncelle</button>
+                    <a href="/Admin/Role/UserList" class="btn btn-danger btn-icon-text"><i class="mdi mdi-reply"></i>İptal</a>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
